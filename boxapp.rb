@@ -12,12 +12,14 @@ enable :sessions
 # This is where we set the API key given by Box.
 # Get a key here: https://www.box.net/developers/services
 set :box_api_key, ENV['BOX_API_KEY']
+Box_API = "z6uq0jbsoiz3qe3qhp4s5wrx08j05j7f"
 
 helpers do
 	
 	# Requires the user to be logged into Box, or redirect them to the login page.
  	 def require_login
-      box_login(settings.box_api_key, session) do |auth_url|
+      #box_login(settings.box_api_key, session) do |auth_url|
+      box_login(Box_API, session) do |auth_url|
       redirect auth_url
     end
   end
