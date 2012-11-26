@@ -8,6 +8,7 @@ require 'rack-flash'
 
 # Sessions are used to keep track of user logins.
 enable :sessions
+@signed_in = false
 
 # This is where we set the API key given by Box.
 # Get a key here: https://www.box.net/developers/services
@@ -61,6 +62,10 @@ helpers do
       end
     end
 
+    def signed_in?
+      require_login
+    end
+
     # Removes session information so the account is forgotten.
 
     # Note: This doesn't actually log the user out, it just clears the session data.
@@ -84,6 +89,7 @@ get '/login' do
 
   update_box_login            # updates login information if given
   account = require_login     # make sure the user is authorized
+  @signed_in = true
   root = account.root         # get the root folder of the account 
   haml :login
    
@@ -92,6 +98,7 @@ end
 # Handles logout requests.
 get "/logout" do
   box_logout(session)
+  @signed_in = false
 
   redirect "/" # redirect to the home page
 end 

@@ -1,24 +1,25 @@
 !!!  
 %html  
   %head  
-    %title My Sinatra Website  
+    %title Box-Test 
     %link{:href=>'css/style.css', :media => "screen", :rel => 'stylesheet', :type => "text/css"}  
   %body  
     #wrapper  
       #header  
-        %h1 My Sinatra Website  
-        %h2 A Simple Site made with Sinatra and HAML!  
+        %h1 Box-Test 
+        %h2 Box-Test Sinatra and HAML!  
       #nav  
         %ol  
           %a(href="/")  
             %li Home  
           %a(href="about")  
             %li About
-          %a(href="login")  
-            %li Login
+        - if @signed_in
           %a(href="logout")  
             %li Logout
-
+        - else
+          %a(href="login")  
+            %li Login
       #content  
         =yield
       #footer  
