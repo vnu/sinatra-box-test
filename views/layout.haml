@@ -2,7 +2,7 @@
 %html  
   %head  
     %title My Sinatra Website  
-    %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")  
+    %link{:rel="stylesheet", :href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css"}
     %link{:href=>'css/style.css', :media => "screen", :rel => 'stylesheet', :type => "text/css"}  
   %body  
     #wrapper  
@@ -21,11 +21,7 @@
             %li Logout
 
       #content  
-        =yield  
-      #side_bar  
-        %h1 Side Bar  
-        %p  
-          This is the side bar of the webpage  
+        =yield
       #footer  
         %p  
           This is the footer.  

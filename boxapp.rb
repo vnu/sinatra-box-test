@@ -83,8 +83,9 @@ end
 get '/login' do 
 
   update_box_login            # updates login information if given
-  account = require_login # make sure the user is authorized
+  account = require_login     # make sure the user is authorized
   root = account.root         # get the root folder of the account 
+  haml :login
    
 end 
 
